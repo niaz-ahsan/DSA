@@ -27,5 +27,5 @@ def solve(arr):
 
 if __name__ == "__main__":
     arr = [1,2,3,4,100]
-    print(solve_opt(arr))
+    print(solve(arr))
     print(solve_opt(arr))
