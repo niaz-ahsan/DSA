@@ -26,7 +26,12 @@ class Linked_list(object):
             self.tail = node
             return
         node.next = self.head
-        self.head = node    
+        self.head = node  
+
+    # O(1) Time & Space
+    def delete_from_head(self):
+        if self.head:
+            self.head = self.head.next
 
     # O(n) Time | O(1) Space       
     def __len__(self):
@@ -62,3 +67,5 @@ if __name__ == "__main__":
     ll.push_at_head(10)
     print(ll) # using dunder __repr__ method
     print(len(ll)) # using dunder __len__ method
+    ll.delete_from_head()
+    print(ll)
