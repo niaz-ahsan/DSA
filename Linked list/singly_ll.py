@@ -33,6 +33,15 @@ class Linked_list(object):
         if self.head:
             self.head = self.head.next
 
+    # O(n) Time & O(1) Space
+    def search(self, val):
+        curr = self.head
+        while curr is not None:
+            if curr.val == val:
+                return True
+            curr = curr.next    
+        return False                
+
     # O(n) Time | O(1) Space       
     def __len__(self):
         if self.head is None:
@@ -69,3 +78,4 @@ if __name__ == "__main__":
     print(len(ll)) # using dunder __len__ method
     ll.delete_from_head()
     print(ll)
+    print(ll.search(-2))
