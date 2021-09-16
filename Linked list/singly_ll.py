@@ -33,6 +33,25 @@ class Linked_list(object):
         if self.head:
             self.head = self.head.next
 
+    # O(n) Time | O(1) Space
+    def delete_by_value(self, val):
+        prev = None
+        curr = self.head
+        if val == self.head.val:
+            self.delete_from_head()
+            return True
+        while curr:
+            if curr.val == val:
+                prev.next = curr.next
+                if curr == self.tail:
+                    self.tail = prev
+                return True    
+            prev = curr
+            curr = curr.next
+        return False            
+
+
+
     # O(n) Time & O(1) Space
     def search(self, val):
         curr = self.head
@@ -74,8 +93,7 @@ if __name__ == "__main__":
     ll.push_at_head(8)
     ll.push_at_tail(-1)
     ll.push_at_head(10)
-    print(ll) # using dunder __repr__ method
-    print(len(ll)) # using dunder __len__ method
-    ll.delete_from_head()
-    print(ll)
-    print(ll.search(-2))
+    print(len(ll), ll) # using dunder __repr__ method
+    # print(len(ll)) # using dunder __len__ method
+    ll.delete_by_value(-1)
+    print(len(ll), ll)
