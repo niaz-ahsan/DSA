@@ -36,6 +36,6 @@ if __name__ == "__main__":
     ll.push_at_tail(7)
     ll.push_at_tail(14)
     ll.push_at_tail(27)
-    #ll.create_loop()
+    ll.create_loop()
     #print(ll.print_cyclic_ll())
     print(is_cyclic(ll))
