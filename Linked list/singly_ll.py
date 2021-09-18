@@ -57,6 +57,26 @@ class Linked_list(object):
         self.head = head
         self.tail = tail
 
+    # Call this method if cyclic list is targeted
+    def create_loop(self):
+        if self.head.next:
+            self.tail.next = self.head
+
+    # Method to check if cyclic list is created!
+    def print_cyclic_ll(self):
+        if not self.head:
+            return 'No list to display!'
+        output = []
+        max_iter = 20
+        i = 0
+        curr = self.head
+        while curr and i <= max_iter:
+            output.append(str(curr.val))
+            output.append('-->')
+            curr = curr.next
+            i += 1
+        return " ".join(output)             
+
     # O(n) Time & O(1) Space
     def search(self, val):
         curr = self.head

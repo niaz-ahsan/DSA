@@ -1,6 +1,6 @@
 from singly_ll import Linked_list
 
-# O(n) Time | O(1) Spa
+# O(n) Time | O(1) Space
 def reverse(ll):
     head, tail = ll.get_head_tail()
     set_tail_later = head
