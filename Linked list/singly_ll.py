@@ -50,7 +50,12 @@ class Linked_list(object):
             curr = curr.next
         return False            
 
+    def get_head_tail(self):
+        return (self.head, self.tail)
 
+    def set_head_tail(self, head, tail):
+        self.head = head
+        self.tail = tail
 
     # O(n) Time & O(1) Space
     def search(self, val):
