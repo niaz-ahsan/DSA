@@ -3,10 +3,14 @@ class Node(object):
         self.val = val
         self.next = None
 
+    def __repr__(self):
+        return f'<{id(self)}, {self.val}>'    
+
 class Linked_list(object):
     def __init__(self):
         self.head = None
         self.tail = None
+        self.length = 0
 
     # O(1) Time & Space
     def push_at_tail(self, val):
@@ -17,6 +21,7 @@ class Linked_list(object):
             return
         self.tail.next = node
         self.tail = node
+        self.length += 1
 
     # O(1) Time & Space
     def push_at_head(self, val):
@@ -27,6 +32,11 @@ class Linked_list(object):
             return
         node.next = self.head
         self.head = node  
+        self.length += 1
+
+    def push_all(self, collection):
+        for elem in collection:
+            self.push_at_tail(elem)        
 
     # O(1) Time & Space
     def delete_from_head(self):
@@ -87,15 +97,8 @@ class Linked_list(object):
         return False                
 
     # O(n) Time | O(1) Space       
-    def __len__(self):
-        if self.head is None:
-            return 0
-        len = 0
-        curr = self.head
-        while curr is not None:
-            len += 1
-            curr = curr.next
-        return len        
+    def __len__(self):        
+        return self.length        
 
     # O(n) Time & Space
     def __repr__(self):
