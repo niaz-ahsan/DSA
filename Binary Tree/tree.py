@@ -32,7 +32,7 @@ class Binary_tree(object):
         if not node:
             node = self.root
         for i in range(0, d + 1):
-            print(" ", end="")
+            print("  ", end="")
         if d > 0:
             print("|_", end=" ")
         print(node.val)
