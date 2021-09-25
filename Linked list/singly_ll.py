@@ -18,6 +18,7 @@ class Linked_list(object):
         if self.head is None:
             self.head = node
             self.tail = node
+            self.length += 1
             return
         self.tail.next = node
         self.tail = node
@@ -29,6 +30,7 @@ class Linked_list(object):
         if self.head is None:
             self.head = node
             self.tail = node
+            self.length += 1
             return
         node.next = self.head
         self.head = node  
@@ -36,12 +38,14 @@ class Linked_list(object):
 
     def push_all(self, collection):
         for elem in collection:
-            self.push_at_tail(elem)        
+            self.push_at_tail(elem) 
+            self.length += len(collection)       
 
     # O(1) Time & Space
     def delete_from_head(self):
         if self.head:
             self.head = self.head.next
+            self.length -= 1
 
     # O(n) Time | O(1) Space
     def delete_by_value(self, val):
@@ -55,6 +59,7 @@ class Linked_list(object):
                 prev.next = curr.next
                 if curr == self.tail:
                     self.tail = prev
+                self.length -= 1    
                 return True    
             prev = curr
             curr = curr.next

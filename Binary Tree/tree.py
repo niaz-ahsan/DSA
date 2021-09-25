@@ -9,48 +9,43 @@ class Node(object):
 
 class Binary_tree(object):
     def __init__(self):
-        self.parent = None
+        self.root = None
 
     def construct(self, data):
-        q = []
-        if not len(data):
-            return
-        p_node = Node(data[0])
-        q.append((p_node, 0))
-        while len(q):
-            node, index = q.pop(0)
-            if index == 0:
-                self.parent = node
-            left_index = (2 * index) + 1
-            right_index = (2 * index) + 2
-            if left_index < len(data) and data[left_index]:
-                left_node = Node(data[left_index])
-                node.left = left_node
-                q.append((left_node, left_index))
+        nodes = []
+        for val in data:
+            if val:
+                nodes.append(Node(val))
             else:
-                node.left = None    
-            if right_index < len(data) and data[right_index]:
-                right_node = Node(data[right_index])
-                node.right = right_node
-                q.append((right_node, right_index))
-            else:
-                node.right = None        
+                nodes.append(None)    
+        reversed = nodes[::-1]
+        self.root = reversed.pop()
+        for node in nodes:
+            if node:
+                if reversed:
+                    node.left = reversed.pop()
+                if reversed:    
+                    node.right = reversed.pop()      
+
 
     def display(self, d = 0, node = None):
         if not node:
-            node = self.parent
+            node = self.root
         for i in range(0, d + 1):
             print(" ", end="")
         if d > 0:
-            print("|_", end="")
+            print("|_", end=" ")
         print(node.val)
         if node.left:
             self.display(d + 1, node.left)  
         if node.right:
             self.display(d + 1, node.right)  
+       
                   
 if __name__ == "__main__":
-    tree_data = [50, 17, 65, 14, 20, 64, 100, None, 16, None, None, 19, 30]
+    tree_data = [1,2,3,None,None,4,None,None,5]
+    tree_data = [1,None,2,None,3]
     tree = Binary_tree()
     tree.construct(tree_data)
     tree.display()
+    print(tree.get_tree())
