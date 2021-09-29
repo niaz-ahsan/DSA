@@ -26,7 +26,23 @@ class BST(object):
                 if curr_root.right:
                     self.add_node(node, curr_root.right)
                 else:
-                    curr_root.right = node                
+                    curr_root.right = node  
+
+    def search(self, val, curr_node = None):
+        if curr_node is None:
+            curr_node = self.root
+        if val == curr_node.val:
+            return True
+        elif val < curr_node.val:
+            if curr_node.left:
+                return self.search(val, curr_node.left)
+            else:
+                return False
+        else:
+            if curr_node.right:
+                return self.search(val, curr_node.right)
+            else:
+                return False                       
 
     # showing inorder so data are shown as sorted
     def display(self, node = None):
@@ -49,3 +65,8 @@ if __name__ == "__main__":
     tree.add_node(Node(60))
     tree.add_node(Node(100))
     tree.display()
+    print()
+    print("60 exists in tree?", end=" ")
+    print(tree.search(60))
+    print("72 exists in tree?", end=" ")
+    print(tree.search(72))
