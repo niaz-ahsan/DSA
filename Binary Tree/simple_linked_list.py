@@ -34,7 +34,10 @@ class Linked_list(object):
             output = self.head
             self.head = self.head.next  
             self.length -= 1
-        return output       
+        return output   
+
+    def peek(self):
+        return self.head        
 
     # O(n) Time & Space
     def __repr__(self):
