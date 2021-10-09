@@ -27,6 +27,15 @@ class Binary_tree(object):
                 if reversed:    
                     node.right = reversed.pop()      
 
+    def _height_helper(self, node, h = 0):
+        if node is None:
+            return h - 1
+        l_height = self._height_helper(node.left, h + 1)
+        r_height = self._height_helper(node.right, h + 1)  
+        return max(l_height, r_height)
+
+    def height(self):
+        return self._height_helper(self.root)           
 
     def display(self, d = 0, node = None):
         if not node:
