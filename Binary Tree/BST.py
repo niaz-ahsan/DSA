@@ -60,7 +60,25 @@ class BST(object):
         if node.right:
             return self.find_max(node.right)
         else:
-            return node.val              
+            return node.val 
+
+    def _kth_max_helper(self, output, node = None):
+        if node is None:
+            node = self.root
+        if node.right:
+            self._kth_max_helper(output, node.right)
+        output.append(node.val)
+        if node.left:
+            self._kth_max_helper(output, node.left)        
+
+    # right->parent->left order traversal k times would result
+    def find_kth_max(self, k):
+        desc_order = []
+        self._kth_max_helper(desc_order)
+        if len(desc_order) >= k:
+            return desc_order[k-1]
+        else:
+            return 'Not enough node'    
 
     # showing inorder so data are shown as sorted
     def display(self, node = None):
@@ -86,6 +104,7 @@ if __name__ == "__main__":
     print()
     print(f'Min value: {tree.find_min()}')
     print(f'Max value: {tree.find_max()}')
+    print(tree.find_kth_max(4))
     '''print("60 exists in tree?", end=" ")
     print(tree.search(60))
     print("72 exists in tree?", end=" ")
