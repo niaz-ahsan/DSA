@@ -44,6 +44,24 @@ class BST(object):
             else:
                 return False                       
 
+    # left most node is the one with least value
+    def find_min(self, node = None):
+        if node is None:
+            node = self.root
+        if node.left:
+            return self.find_min(node.left)
+        else:
+            return node.val  
+
+    # right most node is the one with max value
+    def find_max(self, node = None):
+        if node is None:
+            node = self.root
+        if node.right:
+            return self.find_max(node.right)
+        else:
+            return node.val              
+
     # showing inorder so data are shown as sorted
     def display(self, node = None):
         if node is None:
@@ -66,7 +84,9 @@ if __name__ == "__main__":
     tree.add_node(Node(100))
     tree.display()
     print()
-    print("60 exists in tree?", end=" ")
+    print(f'Min value: {tree.find_min()}')
+    print(f'Max value: {tree.find_max()}')
+    '''print("60 exists in tree?", end=" ")
     print(tree.search(60))
     print("72 exists in tree?", end=" ")
-    print(tree.search(72))
+    print(tree.search(72))'''
